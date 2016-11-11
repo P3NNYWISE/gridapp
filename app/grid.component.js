@@ -14,9 +14,20 @@ var DataSvc_1 = require('./services/DataSvc');
 // The Explorer application root component.
 var GridComponent = (function () {
     function GridComponent(dataSvc) {
+        this.groupBy = 'id';
         this.dataSvc = dataSvc;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this._applyGroupBy();
     }
+    GridComponent.prototype._applyGroupBy = function () {
+        var cv = this.data;
+        cv.beginUpdate();
+        cv.groupDescriptions.clear();
+        var groupDesc = new wijmo.collections.PropertyGroupDescription(this.groupBy);
+        cv.groupDescriptions.push(groupDesc);
+        cv.refresh();
+        cv.endUpdate();
+    };
     GridComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

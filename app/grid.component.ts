@@ -19,11 +19,26 @@ import { DataSvc } from './services/DataSvc';
      // generate some random data
      protected dataSvc: DataSvc;
      data: wijmo.collections.CollectionView;
+     protected groupBy = 'id';
 
      constructor( dataSvc: DataSvc) {
         this.dataSvc = dataSvc;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this._applyGroupBy();
       }
+
+
+      private _applyGroupBy() {
+        var cv = this.data;
+        cv.beginUpdate();
+        cv.groupDescriptions.clear();
+        var groupDesc = new wijmo.collections.PropertyGroupDescription(this.groupBy);
+        cv.groupDescriptions.push(groupDesc);
+        cv.refresh();        
+        cv.endUpdate();
+        }
+
+
 }
 
                     

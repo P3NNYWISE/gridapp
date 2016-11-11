@@ -12,10 +12,12 @@ export class DataSvc {
 
             for (var i = 0; i < count; i++) {
                 data.push({
+                    id: Math.round(Math.random() * 5),
                     client :"String",
                     dueDate: 100,
                     date: new Date(2014, i % 12, i % 28),
-                    amount: Math.random() * 10000,
+                    amount: Math.random() * 5,
+
                     active: i % 4 == 0,
                     
                 });
