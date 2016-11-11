@@ -12,13 +12,13 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('./app.component');
-var dashboard_component_1 = require('./dashboard.component');
 var hero_element_component_1 = require('./hero-element.component');
 var hero_detail_component_1 = require('./hero-detail.component');
 var heroes_component_1 = require('./heroes.component');
 var hero_service_1 = require('./hero.service');
 var grid_component_1 = require('./grid.component');
 var wijmo_angular2_grid_1 = require('wijmo/wijmo.angular2.grid');
+var premium_component_1 = require('./premium.component');
 var DataSvc_1 = require('./services/DataSvc');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
@@ -36,7 +36,7 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                dashboard_component_1.DashboardComponent,
+                premium_component_1.PremiumComponent,
                 hero_detail_component_1.HeroDetailComponent,
                 heroes_component_1.HeroesComponent,
                 grid_component_1.GridComponent,
