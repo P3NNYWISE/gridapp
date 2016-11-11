@@ -1,2 +1,48 @@
+<!-- 
  <wj-flex-grid [itemsSource]="data">
      </wj-flex-grid>
+-->
+<div class="container">
+
+<div class="panel panel-default">
+  <div class="panel-heading">Panel Heading</div>
+     <div class="panel-body">
+
+        <div class="panel panel-default">
+            <div class="panel-body"> headers</div>
+        </div>
+
+
+
+    <wj-flex-grid [itemsSource]="data" [selectionMode]="'Row'">
+        <wj-flex-grid-column [header]="'Id'" [binding]="'amount'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Client'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Group'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Payment File'" [binding]="'amount'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Insured'" [binding]="'client'"  [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Carrier'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Policy'" [binding]="'amount'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Due Date'" [binding]="'dueDate'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Premium Amount'" [binding]="'amount'"  [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Disbursement Type'" [binding]="'client'" [format]="'n0'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Anticipated Pay Date'" [binding]="'dueDate'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Owner'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Wire Instruction'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'button'" ></wj-flex-grid-column>
+    </wj-flex-grid>
+
+
+    </div>
+
+        <div class="panel-footer">
+         <button class="btn btn-default" (click)="togleFreeze(frozenFlex)"> boton</button>   
+        </div>
+</div>
+</div>
+
+
+
+
+
+
+ 
