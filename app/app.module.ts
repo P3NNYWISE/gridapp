@@ -25,7 +25,9 @@ import { DataSvc } from './services/DataSvc';
     AppRoutingModule,
     BrowserModule,
     WjGridModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    JsonpModule
   ],
   declarations: [
     AppComponent,

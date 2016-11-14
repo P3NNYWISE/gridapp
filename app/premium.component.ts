@@ -10,7 +10,7 @@ import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
 
 import { Hero } from './hero';
 import { HeroService } from './hero.service';
-
+/* services*/
 import { DataSvc } from './services/DataSvc';
 
 @Component({

@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 // Angular
 var core_1 = require('@angular/core');
+/**services */
 var DataSvc_1 = require('./services/DataSvc');
 // The Explorer application root component.
 var GridComponent = (function () {
@@ -17,6 +18,7 @@ var GridComponent = (function () {
         this.groupBy = 'id';
         this.dataSvc = dataSvc;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data.pageSize = 19;
         this._applyGroupBy();
     }
     GridComponent.prototype._applyGroupBy = function () {
