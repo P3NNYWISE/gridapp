@@ -11,16 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 /* services*/
 var DataSvc_1 = require('./services/DataSvc');
+var ClientsApi_1 = require('./services/slx-client-ts/api/ClientsApi');
 var PremiumComponent = (function () {
-    function PremiumComponent(dataSvc) {
+    function PremiumComponent(dataSvc, clientsApi) {
         this.heroes = [];
+        this.clientsGroups = [];
+        this.mode = 'Observable';
         this.groupBy = 'id';
         this.dataSvc = dataSvc;
+        this.clientsApi = clientsApi;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
         this.data.pageSize = 19;
         this._applyGroupBy();
     }
     PremiumComponent.prototype.ngOnInit = function () {
+        this.getClientsGroup();
     };
     PremiumComponent.prototype._applyGroupBy = function () {
         var cv = this.data;
@@ -31,14 +36,20 @@ var PremiumComponent = (function () {
         cv.refresh();
         cv.endUpdate();
     };
+    PremiumComponent.prototype.getClientsGroup = function () {
+        var _this = this;
+        this.clientsApi.listClientGroups()
+            .subscribe(function (clientsGroups) { return _this.clientsGroups = clientsGroups; }, function (error) { return _this.errorMessage = error; });
+    };
     PremiumComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'premium-request',
             templateUrl: 'premium.component.html',
-            styleUrls: ['premium.component.css']
+            styleUrls: ['premium.component.css'],
+            providers: [ClientsApi_1.ClientsApi],
         }), 
-        __metadata('design:paramtypes', [DataSvc_1.DataSvc])
+        __metadata('design:paramtypes', [DataSvc_1.DataSvc, ClientsApi_1.ClientsApi])
     ], PremiumComponent);
     return PremiumComponent;
 }());

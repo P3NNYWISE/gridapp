@@ -34,7 +34,7 @@ import 'rxjs/Rx';
 
 @Injectable()
 export class ClientsApi {
-    protected basePath = 'http://northstar.nybblenetwork.com/slx-api/v1';
+    protected basePath = 'http://localhost:8080/slx-api/v1';
     public defaultHeaders : Headers = new Headers();
 
     constructor(protected http: Http, @Optional() basePath: string) {
@@ -63,6 +63,7 @@ export class ClientsApi {
                 if (response.status === 204) {
                     return undefined;
                 } else {
+                    console.log(response);
                     return response.json();
                 }
             });

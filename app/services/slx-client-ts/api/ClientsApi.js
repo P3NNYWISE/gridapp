@@ -42,7 +42,7 @@ require('rxjs/Rx');
 var ClientsApi = (function () {
     function ClientsApi(http, basePath) {
         this.http = http;
-        this.basePath = 'http://northstar.nybblenetwork.com/slx-api/v1';
+        this.basePath = 'http://localhost:8080/slx-api/v1';
         this.defaultHeaders = new http_1.Headers();
         if (basePath) {
             this.basePath = basePath;
@@ -67,6 +67,7 @@ var ClientsApi = (function () {
                 return undefined;
             }
             else {
+                console.log(response);
                 return response.json();
             }
         });

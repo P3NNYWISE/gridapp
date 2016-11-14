@@ -14,9 +14,9 @@ import { HeroService }          from './hero.service';
 import { GridComponent }      from './grid.component';
 import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
 import { PremiumComponent }   from './premium.component';
-
+/* Services */
 import { DataSvc } from './services/DataSvc';
-
+import { ClientsApi } from './services/slx-client-ts/api/ClientsApi';
 
 @NgModule({
   imports: [
@@ -35,9 +35,10 @@ import { DataSvc } from './services/DataSvc';
     HeroDetailComponent,
     HeroesComponent,
     GridComponent,
-    HeroElement
+    HeroElement,
+    
   ],
-  providers: [ HeroService ,DataSvc],
+  providers: [ HeroService ,DataSvc ,ClientsApi],
   bootstrap: [ AppComponent ]
 })
 

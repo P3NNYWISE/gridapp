@@ -23,7 +23,9 @@ var hero_service_1 = require('./hero.service');
 var grid_component_1 = require('./grid.component');
 var wijmo_angular2_grid_1 = require('wijmo/wijmo.angular2.grid');
 var premium_component_1 = require('./premium.component');
+/* Services */
 var DataSvc_1 = require('./services/DataSvc');
+var ClientsApi_1 = require('./services/slx-client-ts/api/ClientsApi');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -45,9 +47,9 @@ var AppModule = (function () {
                 hero_detail_component_1.HeroDetailComponent,
                 heroes_component_1.HeroesComponent,
                 grid_component_1.GridComponent,
-                hero_element_component_1.HeroElement
+                hero_element_component_1.HeroElement,
             ],
-            providers: [hero_service_1.HeroService, DataSvc_1.DataSvc],
+            providers: [hero_service_1.HeroService, DataSvc_1.DataSvc, ClientsApi_1.ClientsApi],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

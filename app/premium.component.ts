@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {  EventEmitter, Input, Inject, enableProdMode, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Observable }       from 'rxjs/Observable';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { BrowserModule } from '@angular/platform-browser';
 import { WjGridModule } from 'wijmo/wijmo.angular2.grid';
@@ -12,30 +13,45 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 /* services*/
 import { DataSvc } from './services/DataSvc';
+import { ClientsApi } from './services/slx-client-ts/api/ClientsApi';
+
+
+import { ClientGroup } from './services/slx-client-ts/model/ClientGroup';
+import * as models from './services/slx-client-ts/model/models';
 
 @Component({
   moduleId: module.id,
   selector: 'premium-request',
   templateUrl: 'premium.component.html',
-  styleUrls: [ 'premium.component.css' ]
+  styleUrls: [ 'premium.component.css' ],
+  providers: [ClientsApi],
 })
 export class PremiumComponent implements OnInit {
-
+  errorMessage: string;
   heroes: Hero[] = [];
-  protected dataSvc: DataSvc;
+  clientsGroups:  ClientGroup[] = [];
+  dataSvc: DataSvc;
+  clientsApi: ClientsApi;
+   mode = 'Observable';
+
   data: wijmo.collections.CollectionView;
   protected groupBy = 'id';
 
 
 
-      constructor( dataSvc: DataSvc) {
+  constructor( dataSvc: DataSvc , clientsApi: ClientsApi) {
         this.dataSvc = dataSvc;
+        this.clientsApi= clientsApi;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
         this.data.pageSize = 19;
         this._applyGroupBy();
+
+        
       }
 
-  ngOnInit(): void {
+  ngOnInit( ) {
+    this.getClientsGroup(); 
+     
 
   }
   private _applyGroupBy() {
@@ -47,6 +63,14 @@ export class PremiumComponent implements OnInit {
         cv.refresh();        
         cv.endUpdate();
         }
+
+   getClientsGroup() {
+    this.clientsApi.listClientGroups()
+                     .subscribe(
+                       clientsGroups => this.clientsGroups = clientsGroups,
+                       error =>  this.errorMessage = <any>error);
+                      
+  }
 }
 
 
