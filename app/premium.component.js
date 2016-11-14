@@ -17,6 +17,7 @@ var PremiumComponent = (function () {
         this.groupBy = 'id';
         this.dataSvc = dataSvc;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data.pageSize = 19;
         this._applyGroupBy();
     }
     PremiumComponent.prototype.ngOnInit = function () {

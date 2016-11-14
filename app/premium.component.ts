@@ -31,6 +31,7 @@ export class PremiumComponent implements OnInit {
       constructor( dataSvc: DataSvc) {
         this.dataSvc = dataSvc;
         this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data.pageSize = 19;
         this._applyGroupBy();
       }
 
