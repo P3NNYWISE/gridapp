@@ -35,6 +35,7 @@ export class PremiumComponent implements OnInit {
    mode = 'Observable';
 
   data: wijmo.collections.CollectionView;
+  premiumRequest = [];
   protected groupBy = 'id';
 
 
@@ -42,7 +43,8 @@ export class PremiumComponent implements OnInit {
   constructor( dataSvc: DataSvc , clientsApi: ClientsApi) {
         this.dataSvc = dataSvc;
         this.clientsApi= clientsApi;
-        this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        //this.data = new wijmo.collections.CollectionView(this.dataSvc.getData(100));
+        this.data = new wijmo.collections.CollectionView(this.clientsGroups);
         this.data.pageSize = 19;
         this._applyGroupBy();
 
@@ -67,14 +69,23 @@ export class PremiumComponent implements OnInit {
    getClientsGroup() {
     this.clientsApi.listClientGroups()
                      .subscribe(
-                       clientsGroups => this.clientsGroups = clientsGroups,
+                       clientsGroups => {this.clientsGroups = clientsGroups;   this.buildGrid() },
                        error =>  this.errorMessage = <any>error);
                       
   }
+   buildGrid(){
+     this.premiumRequest = this.clientsGroups;
+
+     console.log(     this.premiumRequest[0].name)
+
+     this.data = new wijmo.collections.CollectionView(this.premiumRequest);
+     
+
+   }
 }
 
 
-/*
+/* this.clientsGroups = clientsGroups,
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license

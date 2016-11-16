@@ -67,7 +67,6 @@ var ClientsApi = (function () {
                 return undefined;
             }
             else {
-                console.log(response);
                 return response.json();
             }
         });

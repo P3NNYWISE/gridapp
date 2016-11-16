@@ -9,8 +9,8 @@
      <div class="panel-body">
     <wj-flex-grid [itemsSource]="data" [selectionMode]="'Row'">
         <wj-flex-grid-column [header]="'Id'" [binding]="'id'" [width]="'*'"></wj-flex-grid-column>
-        <wj-flex-grid-column [header]="'Client'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
-        <wj-flex-grid-column [header]="'Group'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Client'" [binding]="'name'" [width]="'*'"></wj-flex-grid-column>
+        <wj-flex-grid-column [header]="'Group'" [binding]="'groupType'" [width]="'*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Payment File'" [binding]="'id'" [width]="'*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Insured'" [binding]="'client'"  [width]="'*'"></wj-flex-grid-column>
         <wj-flex-grid-column [header]="'Carrier'" [binding]="'client'" [width]="'*'"></wj-flex-grid-column>
@@ -56,3 +56,7 @@
         </button>
         </div>
 </div>
+
+  <li *ngFor="let client of clientsGroups">
+    <span class="badge">{{client.id}}</span> {{client.name}}
+  </li>

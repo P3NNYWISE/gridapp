@@ -63,7 +63,6 @@ export class ClientsApi {
                 if (response.status === 204) {
                     return undefined;
                 } else {
-                    console.log(response);
                     return response.json();
                 }
             });
